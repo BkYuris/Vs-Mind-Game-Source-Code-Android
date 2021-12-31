@@ -11,9 +11,18 @@ end
 
 function onEvent(name, value1, value2)
 	if name == "Flip Notes" then
-		swapNotesFromStrum(0, 3);
-		swapNotesFromStrum(1, 2);
+		oldNoteX = intendedStrumPos[0];
+		intendedStrumPos[0] = intendedStrumPos[3];
+		intendedStrumPos[3] = oldNoteX;
 
+		oldNoteX = intendedStrumPos[1];
+		intendedStrumPos[1] = intendedStrumPos[2];
+		intendedStrumPos[2] = oldNoteX;
+	elseif name == "Swap Notes" then
+		note1 = tonumber(value1);
+		note2 = tonumber(value2);
+		swapNotesFromStrum(note1, note2);
+		
 		if not lowQuality then
 			for i = 0, 3 do
 				tag = 'psychicNoteTrail'..i;
@@ -22,13 +31,6 @@ function onEvent(name, value1, value2)
 			end
 			runTimer('removeTrailThing', 0.3);
 		end
-	elseif name == "Swap Notes" then
-		note1 = tonumber(value1);
-		note2 = tonumber(value2);
-		
-		oldNoteX = intendedStrumPos[note1];
-		intendedStrumPos[note1] = intendedStrumPos[note2];
-		intendedStrumPos[note2] = oldNoteX;
 	end
 end
 
@@ -96,7 +98,7 @@ function onTimerCompleted(tag, loops, loopsLeft)
 			noteTweenAngle('flipNotesAngleTwn'..i, i + 4, 0, 0.4, 'elasticOut');
 		end
 	end
-
+	
 	if tag == 'removeTrailThing' then
 		for i = 0, 3 do
 			tag = 'psychicNoteTrail'..i;
