@@ -508,50 +508,50 @@ class TitleState extends MusicBeatState
 				case 1:
 					createCoolText(['Brought to you by'], -60);
 				// credTextShit.visible = true;
-				case 3:
+				case 2:
 					addMoreText('a bunch of clever folks', -60);
 					if (!skippedIntro) stupidHeads.visible = true; //god damn it
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
-				case 4:
+				case 3:
 					deleteCoolText();
 					stupidHeads.visible = false;
 				// credTextShit.visible = false;
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
-				case 5:
+				case 4:
 					createCoolText(['Not associated with'], -40);
-				case 7:
+				case 5:
 					addMoreText('newgrounds', -40);
 					ngSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
-				case 8:
+				case 6:
 					deleteCoolText();
 					ngSpr.visible = false;
 				// credTextShit.visible = false;
 
 				// credTextShit.text = 'Shoutouts Tom Fulp';
 				// credTextShit.screenCenter();
-				case 9:
+				case 7:
 					createCoolText([curWacky[0]]);
 				// credTextShit.visible = true;
-				case 11:
+				case 8:
 					addMoreText(curWacky[1]);
 				// credTextShit.text += '\nlmao';
-				case 12:
+				case 9:
 					deleteCoolText();
 				// credTextShit.visible = false;
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
-				case 13:
+				case 10:
 					addMoreText('Friday');
 				// credTextShit.visible = true;
-				case 14:
+				case 11:
 					addMoreText('Night');
 				// credTextShit.text += '\nNight';
-				case 15:
+				case 12:
 					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
-				case 16:
+				case 13:
 					skipIntro();
 			}
 		}
