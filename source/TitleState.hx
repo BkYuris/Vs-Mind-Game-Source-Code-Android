@@ -180,7 +180,7 @@ class TitleState extends MusicBeatState
 	}
 
 	var logoBl:FlxSprite;
-	var gfDance:FlxSprite;
+	var tpsybob:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
 	var swagShader:ColorSwap = null;
@@ -231,7 +231,7 @@ class TitleState extends MusicBeatState
 		// logoBl.color = FlxColor.BLACK;
 
 		swagShader = new ColorSwap();
-			gfDance = new FlxSprite(titleJSON.gfx, titleJSON.gfy);
+			tpsybob = new FlxSprite(titleJSON.gfx, titleJSON.gfy);
 		
 		var path = Main.getDataPath() + "mods/" + Paths.currentModDirectory + "/images/gfDanceTitle.png";
 		//trace(path, FileSystem.exists(path));
@@ -243,12 +243,12 @@ class TitleState extends MusicBeatState
 			path = Main.getDataPath() + "assets/images/gfDanceTitle.png";
 		//trace(path, FileSystem.exists(path));
 		}
-		gfDance.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
-		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
-		add(gfDance);
-		gfDance.shader = swagShader.shader;
+		tpsybob.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
+		tpsybob.animation.addByIndices('danceLeft', 'tpsybob', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+		tpsybob.animation.addByIndices('danceRight', 'tpsybob', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		tpsybob.antialiasing = ClientPrefs.globalAntialiasing;
+		add(tpsybob);
+		tpsybob.shader = swagShader.shader;
 		add(logoBl);
 		//logoBl.shader = swagShader.shader;
 
@@ -492,13 +492,13 @@ class TitleState extends MusicBeatState
 		if(logoBl != null) 
 			logoBl.animation.play('bump');
 
-		if(gfDance != null) {
+		if(tpsybob != null) {
 			danceLeft = !danceLeft;
 
 			if (danceLeft)
-				gfDance.animation.play('danceRight');
+				tpsybob.animation.play('danceRight');
 			else
-				gfDance.animation.play('danceLeft');
+				tpsybob.animation.play('danceLeft');
 		}
 
 		if(!closedState) {
@@ -506,33 +506,21 @@ class TitleState extends MusicBeatState
 			switch (sickBeats)
 			{
 				case 1:
-					#if PSYCH_WATERMARKS
-					createCoolText(['Psych Engine by'], 15);
-					#else
-					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
-					#end
+					createCoolText(['Brought to you by'], -60);
 				// credTextShit.visible = true;
 				case 3:
-					#if PSYCH_WATERMARKS
-					addMoreText('Shadow Mario', 15);
-					addMoreText('RiverOaken', 15);
-					addMoreText('bb-panzu', 15);
-					#else
-					addMoreText('present');
-					#end
+					addMoreText('a bunch of clever folks', -60);
+					if (!skippedIntro) stupidHeads.visible = true; //god damn it
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
 				case 4:
 					deleteCoolText();
+					stupidHeads.visible = false;
 				// credTextShit.visible = false;
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
 				case 5:
-					#if PSYCH_WATERMARKS
-					createCoolText(['Not associated', 'with'], -40);
-					#else
-					createCoolText(['In association', 'with'], -40);
-					#end
+					createCoolText(['Not associated with'], -40);
 				case 7:
 					addMoreText('newgrounds', -40);
 					ngSpr.visible = true;
@@ -563,8 +551,9 @@ class TitleState extends MusicBeatState
 				// credTextShit.text += '\nNight';
 				case 15:
 					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
-
-				case 16:
+                case 16:
+                    addMoreText('Mod Creator By B.K [Yuri]');
+				case 17:
 					skipIntro();
 			}
 		}
