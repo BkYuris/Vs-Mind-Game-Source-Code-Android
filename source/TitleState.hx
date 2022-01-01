@@ -551,9 +551,7 @@ class TitleState extends MusicBeatState
 				// credTextShit.text += '\nNight';
 				case 15:
 					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
-                case 16:
-                    addMoreText('Mod Creator By B.K [Yuri]');
-				case 17:
+				case 16:
 					skipIntro();
 			}
 		}
