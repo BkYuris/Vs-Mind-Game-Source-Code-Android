@@ -1312,7 +1312,7 @@ class PlayState extends MusicBeatState
 	
 	public function videoBG(name:String):Void { //this shit made by sirox
 		var existsFile:Bool = false;
-		var formattedPath:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.webm'); #else ''; #end
+		var formattedPath:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.mp4'); #else ''; #end
 		#if sys
 		if(FileSystem.exists(formattedPath)) {
 			existsFile = true;
@@ -1347,7 +1347,7 @@ class PlayState extends MusicBeatState
 	
 	public function startVideo(name:String):Void {
 		var foundFile:Bool = false;
-		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.webm'); #else ''; #end
+		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.mp4'); #else ''; #end
 		#if sys
 		if(FileSystem.exists(fileName)) {
 			foundFile = true;
@@ -3181,7 +3181,7 @@ class PlayState extends MusicBeatState
 				#end
 			}
 
-			if (isStoryMode)
+				if (isStoryMode)
 			{
 				campaignScore += songScore;
 				campaignMisses += songMisses;
@@ -3190,20 +3190,31 @@ class PlayState extends MusicBeatState
 
 				if (storyPlaylist.length <= 0)
 				{
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
-
-					cancelFadeTween();
-					CustomFadeTransition.nextCamera = camOther;
-					if(FlxTransitionableState.skipNextTransIn) {
-						CustomFadeTransition.nextCamera = null;
+					if(Paths.formatToSongPath(SONG.song) == 'uproar') //The end...?
+					{
+						cancelFadeTween();
+						FlxTransitionableState.skipNextTransIn = true;
+						FlxTransitionableState.skipNextTransOut = true;
+						MusicBeatState.switchState(new TheEndState());
 					}
-					MusicBeatState.switchState(new StoryMenuState());
+					else 
+					{
+						FlxG.sound.playMusic(Paths.music('freakyMenu'));
+
+						cancelFadeTween();
+						CustomFadeTransition.nextCamera = camOther;
+						if(FlxTransitionableState.skipNextTransIn) {
+							CustomFadeTransition.nextCamera = null;
+						}
+						MusicBeatState.switchState(new StoryMenuState());
+					}
 
 					// if ()
 					if(!ClientPrefs.getGameplaySetting('practice', false) && !ClientPrefs.getGameplaySetting('botplay', false)) {
 						StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 
 						if (SONG.validScore)
+						
 						{
 							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 						}
