@@ -266,19 +266,7 @@ class PlayState extends MusicBeatState
 	private var debugKeysChart:Array<FlxKey>;
 	private var debugKeysCharacter:Array<FlxKey>;
 	
-	// Less laggy controls
-	
-	private var keysArray:Array<Dynamic>;
-// This was supposed to be made in Lua, but the existence of this lua script was causing issues on release build??????????
-	// So i changed it stupidly without breaking support for the things i've already had finished
-	public var psychicNoteTrail0:AttachedSprite;
-	public var psychicNoteTrail1:AttachedSprite;
-	public var psychicNoteTrail2:AttachedSprite;
-	public var psychicNoteTrail3:AttachedSprite;
-	public var psychicNoteTrail4:AttachedSprite;
-	public var psychicNoteTrail5:AttachedSprite;
-	public var psychicNoteTrail6:AttachedSprite;
-	public var psychicNoteTrail7:AttachedSprite;
+	// Less laggy ccontrol
 	
 	override public function create()
 	{
