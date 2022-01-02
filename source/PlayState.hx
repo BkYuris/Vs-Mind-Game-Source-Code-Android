@@ -266,8 +266,9 @@ class PlayState extends MusicBeatState
 	private var debugKeysChart:Array<FlxKey>;
 	private var debugKeysCharacter:Array<FlxKey>;
 	
-	// Less laggy ccontrol
-	
+	// Less laggy controls
+	private var keysArray:Array<Dynamic>;
+
 	override public function create()
 	{
 		#if MODS_ALLOWED
@@ -1534,27 +1535,7 @@ class PlayState extends MusicBeatState
 				setOnLuas('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
 				//if(ClientPrefs.middleScroll) opponentStrums.members[i].visible = false;
 			}
-			
-           //i hate my life
-			if (!ClientPrefs.lowQuality)
-			{
-				psychicNoteTrail0 = prepareNoteTrail(0);
-				psychicNoteTrail1 = prepareNoteTrail(1);
-				psychicNoteTrail2 = prepareNoteTrail(2);
-				psychicNoteTrail3 = prepareNoteTrail(3);
-				psychicNoteTrail4 = prepareNoteTrail(4);
-				psychicNoteTrail5 = prepareNoteTrail(5);
-				psychicNoteTrail6 = prepareNoteTrail(6);
-				psychicNoteTrail7 = prepareNoteTrail(7);
-			}
 
-			startedCountdown = true;
-			Conductor.songPosition = 0;
-			Conductor.songPosition -= Conductor.crochet * 5;
-			setOnLuas('startedCountdown', true);
-			callOnLuas('onCountdownStarted', []);
-
-			var swagCounter:Int = 0;
 			startedCountdown = true;
 			Conductor.songPosition = 0;
 			Conductor.songPosition -= Conductor.crochet * 5;
@@ -4402,7 +4383,7 @@ class PlayState extends MusicBeatState
 								case 'week7':
 									if(achievementName == 'week7_nomiss') unlock = true;
 								case 'psychic':
-									if(achievementName == 'weekpsi_nomiss') unlock = true;
+								    if(achievementName == 'weekpsi_nomiss') unlock = true;
 							}
 						}
 					case 'ur_bad':
