@@ -44,8 +44,6 @@ class OptionsState extends MusicBeatState
 				openSubState(new options.GraphicsSettingsSubState());
 			case 'Visuals and UI':
 				openSubState(new options.VisualsUISubState());
-			case 'Subscribe':
-			    CoolUtil.browserLoad('https://youtube.com/channel/UCCGro2NXtGFt9SvPLMA3dpg');
 			case 'Gameplay':
 				openSubState(new options.GameplaySettingsSubState());
 			case 'Adjust Delay and Combo':
@@ -63,7 +61,7 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat-'+ OptionState.desatNum));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat-' + FlxG.random.int(1, MainMenuState.MENUDESAT_MAX)));
 		bg.color = 0xFFea71fd;
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
 		bg.updateHitbox();

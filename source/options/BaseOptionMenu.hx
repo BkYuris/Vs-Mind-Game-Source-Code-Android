@@ -55,7 +55,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		DiscordClient.changePresence(rpcTitle, null);
 		#end
 		
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat-'+ OptionState.desatNum));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat-' + FlxG.random.int(1, MainMenuState.MENUDESAT_MAX)));
 		bg.color = 0xFFea71fd;
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
 		bg.updateHitbox();
