@@ -49,7 +49,9 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
-
+	var colorsArray:Array<Int> = [];
+	var swagShader:ColorSwap;
+	
 	override function create()
 	{
 		#if desktop
