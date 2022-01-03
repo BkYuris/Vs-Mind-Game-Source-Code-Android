@@ -80,7 +80,7 @@ class MainMenuState extends MusicBeatState
 
 		swagShader = new ColorSwap();
 		var randomNum:Int = FlxG.random.int(1, MENUDESAT_MAX);
-		colorLayer = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat-' + FlxG.random.int(1, MainMenuState.MENUDESAT_MAX)));
+		colorLayer = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat-' + randomNum));
 		colorLayer.scrollFactor.set(0, 0.15);
 		colorLayer.setGraphicSize(Std.int(FlxG.width * 1.175), Std.int(FlxG.height * 1.175));
 		colorLayer.updateHitbox();
