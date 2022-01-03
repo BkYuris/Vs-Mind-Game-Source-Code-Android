@@ -1,0 +1,10 @@
+executeLib : libvlccore_videoProgram
+Program : output.json
+data : assets(manifest)/
+exe tg apk
+base.lua
+created>]
+<manifest>
+<parh>
+<android poygram>
+<>
