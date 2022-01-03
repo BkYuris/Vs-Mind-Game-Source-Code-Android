@@ -20,6 +20,7 @@ import lime.app.Application;
 import Achievements;
 import editors.MasterEditorMenu;
 import flixel.input.keyboard.FlxKey;
+import flixel.util.FlxTimer;
 
 using StringTools;
 
@@ -75,7 +76,8 @@ class MainMenuState extends MusicBeatState
 		for (i in 0...leStrings.length) {
 			colorsArray.push(Std.parseInt(leStrings[i]));
 		}
-
+		
+        swagShader = new ColorSwap();
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat-' + FlxG.random.int(1, MainMenuState.MENUDESAT_MAX)));
 		bg.scrollFactor.set(0, yScroll);
